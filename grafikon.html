@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vizualizacija energije odabranih pjesama pomoću CSS-only grafikona - LV1."> 
+    
+    <link rel="stylesheet" href="style.css">
+    <title>Music Hub - Analiza</title>
+</head>
+<body>
+
+    <header>
+        <h1>📊 Analiza Glazbe</h1>
+    </header>
+
+    <nav aria-label="Glavna navigacija">
+        <div class="menu-wrapper">
+            <span class="menu-btn">Menu</span>
+            <ul class="nav-links">
+                <li><a href="index.html">Početna</a></li>
+                <li><a href="grafikon.html">Analiza</a></li>
+                <li><a href="slike.html">Galerija</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="content">
+        <section class="chart-section">
+            <h2>Energija pjesama (Histogram)</h2>
+            <p>Prikaz audio značajki pjesama iz tablice na početnoj stranici.</p>
+
+            <div class="chart-container">
+                <div class="bar" style="--val: 92%;" data-info="Mr. Brightside: 92%"></div>
+                <div class="bar" style="--val: 89%;" data-info="Wonderwall: 89%"></div>
+                <div class="bar" style="--val: 83%;" data-info="Come as You Are: 83%"></div>
+                <div class="bar" style="--val: 66%;" data-info="Take Me Out: 66%"></div>
+                <div class="bar" style="--val: 43%;" data-info="Creep: 43%"></div>
+                <div class="bar" style="--val: 98%;" data-info="Somebody Told Me: 98%"></div>
+            </div>
+            
+            <p class="chart-label">Postotak energije po pjesmi (pređi mišem preko stupca za detalje)</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026. Music Hub LV1. Sva prava pridržana.</p>
+    </footer>
+
+</body>
+</html>

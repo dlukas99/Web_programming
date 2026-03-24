@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css?family=Abel');
+
+/* --- PROMJENA 1: Pozadinska boja (Zahtjev 2.3) --- */
+body {
+  font-family: 'Abel', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #121212; 
+  color: white;
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 40px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* --- PROMJENA 2: Razmak između slika (Zahtjev 2.3) --- */
+.img-gallery-magnific {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; 
+  justify-content: center;
+  padding: 20px;
+}
+
+.galerija_slika {
+  margin: 0;
+  width: 200px; /* Fiksna širina za uredniji grid */
+  background: #191414;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.galerija_slika img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.galerija_slika img:hover {
+  transform: scale(1.08); /* Efekt na hover */
+}
+
+figcaption {
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+/* --- LIGHTBOX (BEZ JAVASCRIPTA) --- */
+
+.lightbox {
+  display: none; /* Skriveno dok se ne klikne */
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Prikazuje se kada klikneš na <a> koji vodi do #id-a */
+.lightbox:target {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 85%;
+  border: 3px solid white;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 50px;
+  color: white;
+  text-decoration: none;
+}
+
+/* Responzivnost */
+@media (max-width: 768px) {
+  .galerija_slika { width: 40%; }
+}
+@media (max-width: 480px) {
+  .galerija_slika { width: 90%; }
+}
