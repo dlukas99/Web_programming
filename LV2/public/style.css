@@ -1,0 +1,239 @@
+/* 1. DEFINIRANJE CSS VARIJABLI (:root) [cite: 51, 53] */
+:root {
+    --primarna-boja: #1DB954;       /* Glazbena zelena boja [cite: 50] */
+    --sekundarna-boja: #191414;      /* Tamna pozadina [cite: 50] */
+    --boja-teksta: #ffffff;
+    --boja-pozadine: #121212;
+    --siva-panel: #282828;
+    --tranzicija: 0.3s ease-in-out;
+    --font-glavni: 'Segoe UI', Arial, sans-serif;
+}
+
+/* 2. OSNOVNI STILOVI */
+body {
+    font-family: var(--font-glavni);
+    margin: 0;
+    padding: 0;
+    background-color: var(--boja-pozadine);
+    color: var(--boja-teksta);
+    line-height: 1.6;
+}
+
+header {
+    background: var(--sekundarna-boja);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid var(--primarna-boja);
+    position: relative;
+}
+
+h1, h2 {
+    color: var(--primarna-boja);
+}
+
+/* 3. INTERAKTIVNI IZBORNIK (BEZ JS-a) [cite: 36, 40, 41] */
+nav {
+    position: absolute; 
+    top: 20px;
+    left: 20px;
+    text-align: left;
+    z-index: 1000;
+}
+
+.menu-btn {
+    display: inline-block;
+    background-color: var(--primarna-boja);
+    color: black;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+    user-select: none;
+}
+
+.nav-links {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: var(--siva-panel);
+    border: 1px solid var(--primarna-boja);
+    width: 200px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+nav:hover .nav-links {
+    display: block;
+}
+
+.nav-links li a {
+    display: block;
+    padding: 12px 15px;
+    color: white;
+    text-decoration: none;
+    transition: var(--tranzicija);
+    border-bottom: 1px solid #333;
+}
+
+.nav-links li a:hover {
+    background-color: var(--primarna-boja);
+    color: black;
+}
+
+/* 4. GRID LAYOUT ZA INDEX.HTML [cite: 4, 102] */
+.grid-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 5. STILIZACIJA TABLICE [cite: 30] */
+.table-section {
+    background: var(--siva-panel);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #333;
+    text-align: left;
+}
+
+th {
+    background-color: var(--sekundarna-boja);
+    color: var(--primarna-boja);
+}
+
+tr:hover {
+    background-color: #333;
+}
+
+/* 6. ASIDE I RESPONZIVNE SLIKE [cite: 31, 34] */
+aside {
+    background: var(--siva-panel);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.responsive-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    transition: var(--tranzicija);
+    opacity: 0.9;
+}
+
+.responsive-img:hover {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+/* 7. CSS-ONLY GRAFIKON (HISTOGRAM) [cite: 46, 57] */
+.chart-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    height: 300px;
+    background: var(--siva-panel);
+    padding: 40px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.bar {
+    width: 50px;
+    background: linear-gradient(to top, var(--primarna-boja), #a5f3bc);
+    position: relative;
+    border-radius: 5px 5px 0 0;
+    animation: grow 1.5s ease-out forwards; /* Animacija za desktop (visina) */
+}
+
+@keyframes grow {
+    from { height: 0; }
+    to { height: var(--val); }
+}
+
+.bar:hover {
+    filter: brightness(1.2);
+}
+
+.bar:hover::after {
+    content: attr(data-info);
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primarna-boja);
+    color: black;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* 8. FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--sekundarna-boja);
+    margin-top: 40px;
+}
+
+/* 9. RESPONZIVNOST (@media) [cite: 68, 98] */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+    
+    nav {
+        position: relative;
+        top: 0;
+        left: 0;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .nav-links {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 100%;
+    }
+    
+    /* PRILAGODBA GRAFIKONA ZA MOBITEL (Zahtjev 2.2) [cite: 64, 66] */
+    .chart-container {
+        flex-direction: column; /* Stupci se slažu jedan ispod drugog  */
+        height: auto;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .bar {
+        width: var(--val); /* Na mobitelu raste širina umjesto visine  */
+        height: 30px;
+        border-radius: 0 5px 5px 0;
+        animation: growMobile 1.5s ease-out forwards; /* Nova animacija za širinu */
+    }
+
+    @keyframes growMobile {
+        from { width: 0; }
+        to { width: var(--val); }
+    }
+}
