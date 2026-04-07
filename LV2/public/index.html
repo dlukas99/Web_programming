@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pregled statistike najpopularnijih rock i indie pjesama - LV1 Web programiranje.">
+    <link rel="stylesheet" href="style.css">
+    <title>Music Hub - Popis Pjesama</title>
+</head>
+<body>
+
+    <header>
+        <nav aria-label="Glavna navigacija" class="hover-nav">
+            <div class="menu-wrapper">
+                <span class="menu-btn" role="button">Menu</span>
+                <ul class="nav-links">
+                    <li><a href="index.html">Početna</a></li>
+                    <li><a href="grafikon.html">Analiza (Grafikon)</a></li>
+                    <li><a href="slike.html">Galerija Slika</a></li>
+                </ul>
+            </div>
+        </nav>
+        <h1>🎵 Music Hub: Top Tracks</h1>
+    </header>
+
+    <main class="grid-container">
+        <section class="table-section" aria-labelledby="naslov-tablice">
+            <h2 id="naslov-tablice">Popis pjesama iz baze</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Naziv pjesme</th>
+                            <th>Izvođač</th>
+                            <th>Godina</th>
+                            <th>Tempo (BPM)</th>
+                            <th>Energija</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Mr. Brightside</td><td>The Killers</td><td>2004</td><td>148.114</td><td>0.918</td></tr>
+                        <tr><td>Wonderwall</td><td>Oasis</td><td>2006</td><td>174.426</td><td>0.892</td></tr>
+                        <tr><td>Come as You Are</td><td>Nirvana</td><td>1991</td><td>120.012</td><td>0.826</td></tr>
+                        <tr><td>Take Me Out</td><td>Franz Ferdinand</td><td>2004</td><td>104.56</td><td>0.664</td></tr>
+                        <tr><td>Creep</td><td>Radiohead</td><td>2008</td><td>91.841</td><td>0.43</td></tr>
+                        <tr><td>Somebody Told Me</td><td>The Killers</td><td>2005</td><td>138.03</td><td>0.979</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            <h3 id="aside-naslov">Istaknuti Album</h3>
+            <picture>
+                <source media="(max-width: 600px)" srcset="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=400">
+                <img src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=800" 
+                     alt="Slika gitare i glazbene opreme u studiju" 
+                     class="responsive-img"
+                     aria-labelledby="aside-naslov">
+            </picture>
+            <p>Glazba se stalno mijenja, ali dobri klasici ostaju vječni.</p>
+        </aside>
+    </main>
+
+    <article class="news-article">
+        <h2>Zanimljivost o BPM-u</h2>
+        <p>Tempo ili BPM (otkucaji u minuti) direktno utječe na to kako doživljavamo energiju pjesme.</p>
+    </article>
+
+    <footer>
+        <p>&copy; 2026. Web Programiranje - Laboratorijska Vježba 1. Sva prava pridržana.</p>
+    </footer>
+
+</body>
+</html>
