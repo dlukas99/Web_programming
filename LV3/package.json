@@ -1,0 +1,18 @@
+{
+  "name": "projekt",
+  "version": "1.0.0",
+  "description": "LV2 - Express server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "pdf-parse": "^2.4.5"
+  }
+}
