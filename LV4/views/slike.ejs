@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dinamička galerija slika - LV2 Web programiranje.">
+    <link rel="stylesheet" href="/style.css">
+    <title>Music Hub - Galerija</title>
+</head>
+<body>
+
+    <header>
+        <nav aria-label="Glavna navigacija" class="hover-nav">
+            <div class="menu-wrapper">
+                <span class="menu-btn" role="button">Menu</span>
+                <ul class="nav-links">
+                    <li><a href="/">Početna</a></li>
+                    <li><a href="/grafikon.html">Analiza (Grafikon)</a></li>
+                    <li><a href="/slike">Galerija Slika</a></li>
+                </ul>
+            </div>
+        </nav>
+        <h1>🎵 Music Hub: Dinamička Galerija</h1>
+    </header>
+
+    <main class="grid-container" style="display: block;">
+        <section class="table-section">
+            <h2>Pregled instrumenata i opreme</h2>            
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; margin-top: 30px;">
+                <% if (images.length > 0) { %>
+                    <% images.forEach(image => { %>
+                        <figure style="margin: 0; background: var(--sekundarna-boja); padding: 15px; border-radius: 10px; border: 1px solid #333; text-align: center;">
+                            <a href="#<%= image.id %>-modal">
+                                <img src="<%= image.url %>" alt="<%= image.title %>" class="responsive-img" style="height: 180px; object-fit: cover; cursor: pointer;">
+                            </a>
+                            <figcaption style="margin-top: 10px; color: var(--primarna-boja); font-weight: bold;">
+                                <%= image.title %>
+                            </figcaption>
+                        </figure>
+
+                        <div id="<%= image.id %>-modal" class="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 2000;">
+                            <a href="#" style="position: absolute; top: 20px; right: 40px; color: white; font-size: 50px; text-decoration: none;">&times;</a>
+                            <img src="<%= image.url %>" alt="<%= image.title %>" style="max-width: 90%; max-height: 80%; border: 3px solid var(--primarna-boja); border-radius: 10px;">
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <p style="grid-column: 1/-1; text-align: center; color: #aaa;">Mapa sa slikama je prazna.</p>
+                <% } %>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        .lightbox:target {
+            display: flex !important;
+        }
+    </style>
+
+    <footer>
+        <p>&copy; 2026. Web Programiranje - Laboratorijska Vježba 2. Sva prava pridržana.</p>
+    </footer>
+
+</body>
+</html>
