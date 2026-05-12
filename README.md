@@ -4,5 +4,5 @@
 
 * **[Laboratorijska vježba 2](https://webprogramming-production.up.railway.app/)**
 
-* **[Laboratorijska vježba 2](https://webprogramming-production.up.railway.app/)** 
+* **[Laboratorijska vježba 3](https://github.com/dlukas99/Web_programming/tree/main/LV3)** 
 
