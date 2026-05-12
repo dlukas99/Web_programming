@@ -1,0 +1,472 @@
+/* STIL ZA GLAZBENI HUB - LV2 
+    Tema: Spotify / Dark Music Hub
+*/
+
+/* 1. DEFINIRANJE CSS VARIJABLI */
+:root {
+    --primarna-boja: #1DB954;       /* Spotify zelena */
+    --sekundarna-boja: #191414;      /* Crna pozadina */
+    --boja-teksta: #ffffff;
+    --boja-pozadine: #121212;        /* Tamno siva pozadina */
+    --siva-panel: #282828;           /* Svjetlija siva za kartice */
+    --tranzicija: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --font-glavni: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 2. OSNOVNI STILOVI */
+body {
+    font-family: var(--font-glavni);
+    margin: 0;
+    padding: 0;
+    background-color: var(--boja-pozadine);
+    color: var(--boja-teksta);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+header {
+    background: var(--sekundarna-boja);
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 2px solid var(--primarna-boja);
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.site-logo {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+h1, h2, h3 {
+    color: var(--primarna-boja);
+    margin-top: 0;
+}
+
+/* 3. INTERAKTIVNI IZBORNIK (S popravljenim "Mostom") */
+nav {
+    position: absolute; 
+    top: 30px;
+    left: 20px;
+    z-index: 1000;
+    /* Dodajemo malo paddinga na dno nav-a da stvorimo "most" za miša */
+    padding-bottom: 20px; 
+}
+
+.menu-btn {
+    display: inline-block;
+    background-color: var(--primarna-boja);
+    color: #000;
+    padding: 10px 25px; /* Malo širi gumb */
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: var(--tranzicija);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.nav-links {
+    display: none;
+    list-style: none;
+    padding: 10px 0;
+    /* MAKNULI SMO MARGIN-TOP jer on stvara rupu koja gasi hover */
+    margin: 0; 
+    background-color: var(--siva-panel);
+    border: 1px solid var(--primarna-boja);
+    width: 220px;
+    position: absolute;
+    /* Postavljamo ga točno ispod gumba */
+    top: 45px; 
+    left: 0;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.6);
+}
+
+/* Kada je miš bilo gdje unutar NAV-a (na gumbu ili na izborniku), on ostaje otvoren */
+nav:hover .nav-links {
+    display: block;
+}
+
+.nav-links li a {
+    display: block;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    transition: var(--tranzicija);
+}
+
+.nav-links li a:hover {
+    background-color: var(--primarna-boja);
+    color: black;
+    padding-left: 30px; /* Malo jači pomak na hover */
+}
+/* 4. GRID LAYOUT ZA INDEX */
+.grid-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 5. TABLICA PJESAMA */
+.table-section {
+    background: var(--siva-panel);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 480px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 15px;
+    border-bottom: 1px solid #3e3e3e;
+    text-align: left;
+}
+
+th {
+    background-color: rgba(0,0,0,0.2);
+    color: var(--primarna-boja);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+tr:hover {
+    background-color: rgba(255,255,255,0.05);
+}
+
+/* 6. SIDEBAR (ASIDE) */
+aside {
+    background: var(--siva-panel);
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    height: fit-content;
+}
+
+.responsive-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    transition: var(--tranzicija);
+}
+
+.responsive-img:hover {
+    transform: translateY(-5px);
+}
+
+/* 7. GRAFIKON (HISTOGRAM) */
+.chart-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    height: 350px;
+    background: var(--siva-panel);
+    padding: 50px 30px;
+    border-radius: 15px;
+    margin: 40px auto;
+    max-width: 800px;
+}
+
+.bar {
+    width: 60px;
+    background: linear-gradient(to top, var(--primarna-boja), #a5f3bc);
+    position: relative;
+    border-radius: 8px 8px 0 0;
+    /* Visina se definira u HTML-u preko style="--val: ..." */
+    height: 0; 
+    animation: grow 1.2s cubic-bezier(0.17, 0.67, 0.83, 0.67) forwards;
+}
+
+@keyframes grow {
+    from { height: 0; }
+    to { height: var(--val); }
+}
+
+.bar:hover::after {
+    content: attr(data-info);
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    color: #000;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* 8. FOOTER */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: var(--sekundarna-boja);
+    margin-top: 60px;
+    border-top: 1px solid #333;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+/* 8.1 BLAGI RUBOVI SADRZAJA */
+main, article, footer {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.news-article {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 8A. FORMULARI I PORUKE */
+.form-card {
+    background: var(--sekundarna-boja);
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 25px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.form-grid label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.9rem;
+}
+
+.input {
+    background: #0f0f0f;
+    border: 1px solid #333;
+    color: var(--boja-teksta);
+    padding: 10px 12px;
+    border-radius: 8px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.button {
+    display: inline-block;
+    background: var(--primarna-boja);
+    border: none;
+    color: #000;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--tranzicija);
+}
+
+.button:hover {
+    transform: translateY(-1px);
+}
+
+.button-ghost {
+    background: transparent;
+    border: 1px solid var(--primarna-boja);
+    color: var(--primarna-boja);
+}
+
+.alert {
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin: 20px 0;
+    font-weight: 600;
+}
+
+.alert-success {
+    background: rgba(29, 185, 84, 0.2);
+    border: 1px solid rgba(29, 185, 84, 0.6);
+}
+
+.alert-error {
+    background: rgba(255, 107, 107, 0.15);
+    border: 1px solid rgba(255, 107, 107, 0.6);
+}
+
+.alert-warning {
+    background: rgba(255, 193, 7, 0.15);
+    border: 1px solid rgba(255, 193, 7, 0.6);
+}
+
+.scroll-box {
+    max-height: 360px;
+    overflow-y: auto;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.scroll-box table {
+    margin-top: 0;
+}
+
+.muted {
+    color: #9a9a9a;
+}
+
+/* 8B. GALERIJA I OCJENE */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.image-card {
+    margin: 0;
+    background: var(--sekundarna-boja);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    text-align: center;
+}
+
+.image-title {
+    margin-top: 10px;
+    color: var(--primarna-boja);
+    font-weight: bold;
+}
+
+.rating-block {
+    margin-top: 10px;
+}
+
+.rating-average {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.rating-form {
+    display: grid;
+    gap: 10px;
+    justify-items: center;
+}
+
+.stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 4px;
+}
+
+.stars input {
+    display: none;
+}
+
+.stars label {
+    font-size: 1.4rem;
+    color: #444;
+    cursor: pointer;
+    transition: var(--tranzicija);
+}
+
+.stars label:hover,
+.stars label:hover ~ label,
+.stars input:checked ~ label {
+    color: var(--primarna-boja);
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.lightbox:target {
+    display: flex;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: white;
+    font-size: 50px;
+    text-decoration: none;
+}
+
+.lightbox-image {
+    max-width: 90%;
+    max-height: 80%;
+    border: 3px solid var(--primarna-boja);
+    border-radius: 10px;
+}
+
+/* 9. RESPONZIVNOST */
+@media (max-width: 900px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        position: static;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .nav-links {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Grafikon na mobitelu prelazi u vodoravne linije */
+    .chart-container {
+        flex-direction: column;
+        height: auto;
+        align-items: flex-start;
+        padding: 30px;
+    }
+
+    .bar {
+        width: 0; /* Širina raste umjesto visine */
+        height: 35px;
+        margin-bottom: 10px;
+        border-radius: 0 8px 8px 0;
+        animation: growMobile 1.2s ease-out forwards;
+    }
+
+    @keyframes growMobile {
+        from { width: 0; }
+        to { width: var(--val); }
+    }
+}
